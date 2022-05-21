@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouiz on Trangle</title>
+</head>
+
+<body>
+    <nav> 
+        <ul> 
+            <li><a class="btArean btn-light" href="index.html" role="button">Quiz</a></li>
+            <li><a class="btArean btn-light" href="is trangle.html" role="button">is trangle</a></li>
+            <li><a class="btArean btn-light" href="Hypotenuse.html" role="button">Hypotenuse</a></li>
+            <li><a class="btArean btn-light" href="area of trangle.html" role="button">area of trangle</a></li>
+            <!-- <li><a class="btArean btn-light" href="area of Triangle.html" role="button">area of Triangle</a></li> -->
+        </ul> 
+    </nav>
+    <main class="angles-triangles-main">
+        <h1>Angles of triangles</h1>
+        <label class="input-label" for="Angle1">
+            <p>Angle1</p>
+        </label>
+        <input type="number" class="angle-input" />
+        <label class="input-label" for="Angle2">
+            <p>Angle2</p>
+        </label>
+        <input type="number" class="angle-input" />
+        <label class="input-label" for="Angle3">
+            <p>Angle3</p>
+        </label>
+        <input type="number" class="angle-input" />
+    </main>
+        <button class="btn-check" id="is-triangle-btn">Is Triangle?</button>
+        <h2 class="output"></h2>
+        <!-- <button class="btn-check" id="is-triangle-btn">Is Triangle?</button> -->
+        <p id="output" class="output"></p>
+    <footer>
+        <img class="emage" src="github.png">
+        <img class="img1" src="twit.png">
+    </footer>
+
+    <script>
+        const inputs = document.querySelectorAll(".angle-input");
+        const isTriangleBtn = document.querySelector("#is-triangle-btn");
+        const outputEl = document.querySelector(".output");
+
+        function sumOfAngles(angle1, angle2, angle3) {
+            const sum = angle1 + angle2 + angle3;
+            return sum;
+        }
+
+        function isTriangle() {
+            const sum = sumOfAngles(
+                Number(inputs[0].value),
+                Number(inputs[1].value),
+                Number(inputs[2].value)
+            );
+            if (sum === 180) {
+                console.log("Yay, the angles form a triangle!");
+                outputEl.innerText = "Yay, the angles form a triangle!";
+            } else {
+                console.log("Oh Oh! The angle doesn't form a triangle");
+                outputEl.innerText = "Oh Oh! The angle doesn't form a triangle";
+            }
+        }
+
+        isTriangleBtn.addEventListener("click", isTriangle);
+    </script>
+</body>
+
+</html>

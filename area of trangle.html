@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ouiz on Trangle</title>
+</head>
+
+<body>
+    <nav> 
+        <ul> 
+            <li><a class="btArean btn-light" href="index.html" role="button">Quiz</a></li>
+            <li><a class="btArean btn-light" href="is trangle.html" role="button">is trangle</a></li>
+            <li><a class="btArean btn-light" href="Hypotenuse .html" role="button">Hypotenuse </a></li>
+            <li><a class="btArean btn-light" href="area of trangle.html" role="button">area of trangle</a></li>
+        </ul> 
+     </nav>
+    <main class="calculate-area-main">
+        <h1>Calculate Area of a triangle</h1>
+        <form id="calculate-area">
+            <label class="input-label" for="first-side">
+                <p>Enter first side of a triangle</p>
+                <input class="input-text" required type="number" id="first-side" />
+            </label>
+            <label class="input-label" for="second-side">
+                <p>Enter second side of a triangle</p>
+                <input class="input-text" required type="number" id="second-side" />
+            </label>
+            <label class="input-label" for="third-side">
+                <p>Enter third side of a triangle</p>
+                <input class="input-text" required type="number" id="third-side" />
+            </label>
+            <button class="btn-check" type="submit">Calculate</button>
+        </form>
+        <p class="output calculate-area-output" id="output"></p>
+    </main>
+    <footer>
+        <img class="emage" src="github.png">
+        <img class="img1" src="twit.png">
+    </footer>
+
+    <script>
+        const firstSide = document.querySelector("#first-side");
+        const secondSide = document.querySelector("#second-side");
+        const thirdSide = document.querySelector("#third-side");
+        const calculate = document.querySelector("#calculate-area");
+        const output = document.querySelector("#output");
+
+        function calculateArea(e) {
+            e.preventDefault();
+
+            const firstSideValue = Number(firstSide.value);
+            const secondSideValue = Number(secondSide.value);
+            const thirdSideValue = Number(thirdSide.value);
+
+            if (
+                firstSideValue + secondSideValue > thirdSideValue &&
+                secondSideValue + thirdSideValue > firstSideValue &&
+                firstSideValue + thirdSideValue > secondSideValue
+            ) {
+                const semiPerimeter =
+                    (firstSideValue + secondSideValue + thirdSideValue) / 2;
+
+                const result = Math.sqrt(
+                    semiPerimeter *
+                    (semiPerimeter - firstSideValue) *
+                    (semiPerimeter - secondSideValue) *
+                    (semiPerimeter - thirdSideValue)
+                ).toFixed(4);
+                output.innerText = `Area of a triangle using heron's formula is ${result} units`;
+            } else {
+                output.innerText = "Enter valid side lengths such that each side lengths";
+            }
+        }
+
+        calculate.addEventListener("submit", calculateArea);
+    </script>
+</body>
+
+</html>
